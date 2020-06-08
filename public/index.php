@@ -76,5 +76,19 @@ $app->get('/optional/[{id}]', function($request,$response,$args) {
 	}
 	return $response;
 });
+// unlmited Optional Segments
+$app->get('/unlmited/optional[/{parms:.*}]', function($request,$response,$args) {
+	$parms = explode('/', $request->getAttribute('parms'));
+	if (empty($parms[0])){
+		$response->getBody()->write("The params list is null");
+	}else{
+		$out="";
+		foreach ($parms as $key => $value) {
+			$out = $out. " " . "$key => $value";
+		}
+		$response->getBody()->write($out);
+	}
+	return $response;
+});
 // this is to run the whole code
 $app->run();
