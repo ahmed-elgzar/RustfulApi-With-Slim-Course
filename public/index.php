@@ -97,5 +97,17 @@ $app->get('/regular/{id:[0-9]+}/{name:[a-z]+}', function($request, $response, $a
 	$response->getBody()->write("Hello $name , Your Id = $id");
 	return $response;
 });
+// API group
+$app->group('/testgroup', function($group){
+	$group->get('', function($request, $response){
+		$response->getBody()->write("This empty get method");
+		return $response;
+	});
+	$group->get('/{name}', function($request,$response,$args){
+		$name = $args['name'];
+		$response->getBody()->write("Hello $name");
+		return $response;
+	});
+});
 // this is to run the whole code
 $app->run();
