@@ -12,5 +12,8 @@ require __DIR__ . '/../Api/multible.php';
 require __DIR__ . '/../Api/optional.php';
 require __DIR__ . '/../Api/putResource.php';
 require __DIR__ . '/../Api/group.php';
+require __DIR__ . '/../Api/request.php';
+
+
 // this is to run the whole code
 $app->run();
